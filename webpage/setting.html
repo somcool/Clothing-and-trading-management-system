@@ -1,0 +1,256 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+<div class="navbar_">
+<div class="container">
+  <div class="row">
+    <h1 id=h1>
+      <span id="h15" style="margin-right: 10px;cursor: pointer"><a href="#/home">Home</a></span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="logout()"> | Logout</span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer"><a href="#/profile">คลิกเพื่อกลับไปที่โปรไฟล์ : {{username}}</a></span>
+      <span id="h12" class="lnr lnr-user"></span>
+    </h1>
+  </div>
+</div>
+</div><br><br><br><br>
+<!-- ---------------------General------------------------- -->
+
+  <div class="container" ng-app="controllers">
+     <div class="back_">
+       <h1 id="h111">
+         <span id="h17">การตั้งค่า</span>
+       </h1><hr>
+        <div class="row" ng-controller="home">
+          <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+              <li ng-class="{ active: isSet(1) }">
+                  <a href ng-click="setTab(1)">ข้อมูลส่วนตัว</a>
+              </li>
+              <li ng-class="{ active: isSet(2) }">
+                  <a href ng-click="setTab(2)">บัญชีธนาคาร</a>
+              </li>
+              <li ng-class="{ active: isSet(3) }">
+                  <a href ng-click="setTab(3)" data-toggle="modal" data-target="#myModall3" >เปลี่ยนรหัสผ่าน</a>
+              </li>
+            </ul>
+          </div>
+<!-- --------------------------------------- -->
+
+          <div class="col-md-8">
+            <div class="back_">
+<!-- ---------------------------------------- -->
+              <div ng-show="isSet(1)">
+                <span id="h17">ข้อมูลส่วนตัวทั้งหมด </span>
+                <a type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModall1"><span class="lnr lnr-pencil"></span> แก้ไขข้อมูล</a>
+                <hr>
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th style="font-size: 14px;color: #303030;text-align: center">Name</th>
+                            <th style="font-size: 14px;color: #303030;text-align: center">Username</th>
+                             <th style="font-size: 14px;color: #303030;text-align: center">Email</th>
+                             <th style="font-size: 14px;color: #303030;text-align: center">Detail</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="user in show_user">
+                            <td style="font-size: 14px;color: #303030;text-align: center">{{user.name}}</td>
+                            <td style="font-size: 14px;color: #303030;text-align: center">{{user.username}}</td>
+                            <td style="font-size: 14px;color: #303030;text-align: center">{{user.email}}</td>
+                            <td style="font-size: 14px;color: #303030;text-align: center">{{user.detail}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+<!-- -------------------------------------------------------------------------------- -->
+              <div ng-show="isSet(2)">
+                <span id="h17"> บัญชีธนาคาร </span>
+                <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModall2"  style="cursor: pointer" ><span class="lnr lnr-file-add"></span> เพิ่มธนาคาร<br></a>
+                <hr>
+                    <table class="table" >
+                        <thead>
+                            <tr>
+                                <th style="font-size: 14px;color: #303030;text-align: center">เลขบัญชี</th>
+                                <th style="font-size: 14px;color: #303030;text-align: center">ชื่อธนาคาร</th>
+                                 <th style="font-size: 14px;color: #303030;text-align: center">ชื่อเจ้าของบัญชี</th>
+                                 <th style="font-size: 14px;color: #303030;text-align: center">ลบ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat=" p in show_bankk">
+                                <td style="font-size: 14px;color: #303030;text-align: center">{{p.no_bank}}</td>
+                                <td style="font-size: 14px;color: #303030;text-align: center">{{p.bank}}</td>
+                                <td style="font-size: 14px;color: #303030;text-align: center">{{p.name_bank}}</td>
+                                <td style="font-size: 14px;color: #cc0000;text-align: center">
+                                  <span class="lnr lnr-cross mo_" style="cursor: pointer" data-ng-click="del_bank(p.id_bank)"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+<!-- -------------------------------------------------------------------------------- -->
+              <div ng-show="isSet(3)">
+                <span id="h17"> เปลี่ยนรหัสผ่าน</span><hr>
+
+              </div>
+<!-- ----------------------------------------------------------------------------- -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ------------------------------------------------------------------------------- -->
+<div class="modal fade bs-example-modal-lg" id="myModall1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form data-ng-submit="edit_profile()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-pencil"></span> Edit Profile</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 over"  >
+                      <div class="col-lg-5 col-md-5 col-sm-5 "></div>
+                        <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-pencil"></span> Edit Profile</h3>
+                        <br>
+                          <div class="res" >
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0" >
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <label>Name :</label>
+                                        <input class="form-control " data-ng-model="p.name" type="text" data-ng-value="name" />
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <label>Detail :</label>
+                                        <input class="form-control " data-ng-model="p.detail" type="text" data-ng-value="detail" />
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          <div class="modal-footer">
+                            <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+
+                              <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+                                  <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                      <button type="button" class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+                                  </div>
+                                  <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                      <button type="submit" class="btn-aa4">แก้ไขข้อมูล</button>
+                                  </div>
+                              </div>
+
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- -------------------------------- -->
+  <div class="modal fade bs-example-modal-lg" id="myModall2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+              <form data-ng-submit="add_bank()">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-file-add"></span> เพิ่มข้อมูลเลขบัญชี</h3>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 over"  >
+                        <div class="col-lg-5 col-md-5 col-sm-5 "></div>
+                          <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-pencil"></span> เพิ่มเลขบัญชี</h3>
+                          <br>
+                            <div class="res" id="edit_d">
+                              <div class="row">
+                                  <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0" >
+                                      <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label>เลขบัญชี :</label>
+                                        <input class="form-control " data-ng-model="p.no_bank" type="text" required =""/>
+                                      </div>
+                                      <div class="col-lg-12 col-md-6 col-sm-12">
+                                        <label>ชื่อธนาคาร :</label>
+                                        <input class="form-control " data-ng-model="p.bank" type="text" required=""/>
+                                      </div>
+                                      <div class="col-lg-12 col-md-6 col-sm-12">
+                                        <label>ชื่อเจ้าของบัญชี :</label>
+                                        <input class="form-control " data-ng-model="p.name_bank" type="text" required=""/>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            <div class="modal-footer">
+                              <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+
+                                <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+                                    <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                        <button type="button" class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                        <button type="submit" class="btn-aa4">เพิ่ม</button>
+                                    </div>
+                                </div>
+
+                              </div>
+                          </div>
+                      </div>
+                   </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <!-- -------- alert----- Edit --- password -------------- -->
+
+
+  <div class="modal fade bs-example-modal-lg" id="myModall3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+              <form data-ng-submit="edit_password()">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-pencil"></span> Edit Password</h3>
+                  </div>
+
+                  <div class="res " id="pass_edit">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0">
+                            <div class="col-lg-12 col-md-10 col-sm-10">
+                                <label>Password New :</label>
+                                <input class="form-control " data-ng-model="ed.pass" type="password" required=""/>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label>Confirm Password :</label>
+                                <input class="form-control "  data-ng-model="ed.con" type="password" required=""/>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+
+                            <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                <button type="button" class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                <button type="submit" class="btn-aa4">เพิ่ม</button>
+                            </div>
+                        </div>
+
+                    </div>
+              </form>
+          </div>
+      </div>
+  </div>

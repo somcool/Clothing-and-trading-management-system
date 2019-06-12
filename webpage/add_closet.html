@@ -1,0 +1,74 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+<div class="navbar_">
+<div class="container">
+  <div class="row">
+    <h1 id=h1>
+      <span id="h15" style="margin-right: 10px;cursor: pointer" data-ng-click="homee()"><a href="#/home">Home</a></span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="logout()"> | Logout</span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="profile()"><a href="#/profile">คลิกเพื่อกลับไปที่โปรไฟล์ : {{username}}</a></span>
+      <span id="h12" class="lnr lnr-user"></span>
+    </h1>
+  </div>
+</div>
+</div><br><br><br><br><br>
+<!-- ------------------------------------------------------------------------------ -->
+<div class="container">
+  <div class="back_">
+    <div class="row | brands_products">
+      <form data-ng-submit="add_closet()">
+        <h2>{{add}}</h2>
+          <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <label>ประเภทเสื้อผ้า :</label>
+                <select class="form-control " data-ng-options="t.id as t.nameTH for t in show_type" placeholder="กรอกประเภท" data-ng-model="form.type_id" required="">
+                    <option value="" >กรุณาเลือกประเภทเสื้อผ้า</option><span class="lnr lnr-chevron-down"></span>
+                </select>
+            </div>
+              <div class="col-lg-3 col-md-3 col-sm-3">
+                  <label>ราคา :</label>
+                  <input class="form-control "  data-ng-model="form.price" type="number" required="" />
+                  <input class="form-control "  data-ng-model="form.idi" type="hidden"  />
+              </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <label>ยี่ห้อ :</label>
+                <select class="form-control " data-ng-options="b.id as b.name for b in show_brand" placeholder="กรอกยี่ห้อ" data-ng-model="form.brand_id" required="">
+                    <option value="" >กรุณาเลือกประเภทยี่ห้อ</option><span class="lnr lnr-chevron-down"></span>
+                </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <label>สี :</label>
+                <select class="form-control " data-ng-options="c.id as c.nameColor for c in show_color" placeholder="กรอกสี" data-ng-model="form.color_id" required="">
+                    <option value="" >กรุณาเลือกสี</option><span class="lnr lnr-chevron-down"></span>
+                </select>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <label>เลือกรูปภาพประกอบ :</label>
+            <input ng-model="form.image" name="image"  class = "form-control" type="file" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" required="">
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <label>รายละเอียด (เพิ่มเติม) :</label>
+              <input class="form-control "  data-ng-model="form.detail" type="text" required=""/>
+          </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 ">
+              <div class="col-lg-6 col-md-6 col-sm-6" >
+                  <a href="#/profile"><button  type="button"  class="btn-aa4" style="background: #999" data-dismiss="modal" >
+                    <span class="lnr lnr-arrow-left"> กลับไปหน้าหลัก</span></button></a>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 ">
+                  <button class="btn-aa4" type="submit" style="border: 1px solid #fff" >{{submit}}</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>

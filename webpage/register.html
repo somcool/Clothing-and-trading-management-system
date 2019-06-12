@@ -1,0 +1,47 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+<div class="wrapper">
+  <div class="inner">
+    <div class="image-holder">
+      <img src="images/bg-re.jpg">
+    </div>
+    <form data-ng-submit="addregister()">
+      <h3>Register</h3>
+
+        <div class="form-wrapper">
+          <label>Name</label>
+          <input class="form-control" data-ng-model="register.name" type="text" required=""/>
+        </div>
+
+        <div class="form-wrapper">
+          <label>Username</label>
+          <input class="form-control" data-ng-model="register.username" type="text" required=""/>
+        </div>
+
+        <div class="form-wrapper">
+          <label>Email</label>
+          <input class="form-control" data-ng-model="register.email" type="email" required=""/>
+        </div>
+
+        <div class="form-wrapper">
+          <label>Password</label>
+          <input class="form-control" data-ng-model="register.password" type="password" required=""/>
+        </div>
+
+        <button class="btn-aa4">Register</button><br><br>
+
+        <div class="text-center p-t-136">
+          <a class="txt2" href="#/login">Login your Account
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+          </a>
+        </div>
+
+    </form>
+  </div>
+</div>

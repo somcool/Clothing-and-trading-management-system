@@ -1,0 +1,560 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+<div class="navbar_">
+<div class="container">
+  <div class="row">
+    <h1 id=h1>
+      <span id="h15" style="margin-right: 10px;cursor: pointer" data-ng-click="homee()"><a href="#/home">Home</a></span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="logout()"> | Logout</span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="profile()"><a href="#/profile">คลิกเพื่อกลับไปที่โปรไฟล์ : {{username}}</a></span>
+      <span id="h12" class="lnr lnr-user"></span>
+    </h1>
+  </div>
+</div>
+</div><br><br>
+<!-- ---------------------General------------------------- -->
+<br><br>
+  <div class="container" ng-app="controllers">
+     <div class="back_">
+       <h1 id="h111">
+         <span id="h17">รายการซื้อของฉัน</span>
+       </h1><hr>
+        <div class="row" ng-controller="home">
+          <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+              <li ng-class="{ active: isSet(1) }">
+                  <a href ng-click="setTab(1)">สินค้าที่รอการตอบรับ</a>
+              </li>
+              <li ng-class="{ active: isSet(2) }">
+                  <a href ng-click="setTab(2)"> ตอบรับการสั่งซื้อ</a>
+              </li>
+              <li ng-class="{ active: isSet(3) }">
+                  <a href ng-click="setTab(3)"> สินค้าที่ถูกยกเลิกการตอบรับ</a>
+              </li>
+              <li ng-class="{ active: isSet(4) }">
+                  <a href ng-click="setTab(4)">ชำระแล้ว</a>
+              </li>
+              <li ng-class="{ active: isSet(5) }">
+                  <a href ng-click="setTab(5)">สินค้าที่กำลังจัดส่ง</a>
+              </li>
+              <li ng-class="{ active: isSet(6) }">
+                  <a href ng-click="setTab(6)">ยกเลิกการซื้อ</a>
+              </li>
+              <li ng-class="{ active: isSet(7) }">
+                  <a href ng-click="setTab(7)">สินค้าที่ได้รับแล้ว</a>
+              </li>
+            </ul>
+          </div>
+<!-- ------------------------------------------------------------------ -->
+<!-- $('#myModall5').modal("show"); -->
+
+          <div class="col-md-8">
+            <div class="back_">
+<!-- ------------------------------------------------------------------ -->
+              <div ng-show="isSet(1)">
+                <h2 class="title">สินค้าที่รอการตอบรับทั้งหมด</h2>
+                <div class="col-sm-12 padding-right" >
+                  <div class="features_items" ><!--features_items-->
+                      <div class="col-sm-4" data-ng-repeat="image in show_data_buy" >
+                        <div class="product-image-wrapper" >
+                          <div class="single-products">
+                            <div class="productinfo text-center" >
+                              <img data-ng-src="images/closet/{{image.image}}"><br>
+                              <a  class="btn btn-default add-to-cart" data-ng-click="buyy_detail(image.idi)" style="cursor: pointer"><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!--features_items-->
+                </div><br>
+              </div>
+
+<!-- ------------------------------------------------------------------- -->
+
+              <div ng-show="isSet(2)">
+                <h2 class="title">ตอบรับการสั่งซื้อ</h2>
+                <div class="col-sm-12 padding-right" >
+                  <div class="features_items" ><!--features_items-->
+                      <div class="col-sm-4" data-ng-repeat="image in show_confrim_data" >
+                        <div class="product-image-wrapper" >
+                          <div class="single-products">
+                            <div class="productinfo text-center" >
+                              <img data-ng-src="images/closet/{{image.image}}" >
+                              <p id="h17">Detail : {{image.detail}}</p>
+                              <h1>Price : {{image.price}}  Bath</h1><br>
+                              <a  class="btn btn-default add-to-cart" data-ng-click="cancel_confirm(image.idi)"><span class="lnr lnr-thumbs-down" style="color: #cc0000"></span> ยกเลิก</a>
+                              <a  class="btn btn-default add-to-cart" data-ng-click="confirm_transfer(image.idi)"><span class="lnr lnr-thumbs-up"  style="color: #009933"></span> ยืนยัน</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!--features_items-->
+                </div><br>
+              </div>
+<!-- ------------------------------------------------------------------- -->
+
+              <div ng-show="isSet(3)">
+                <h2 class="title">สินค้าที่ถูกยกเลิกการตอบรับ</h2>
+                <div class="col-sm-12 padding-right" >
+                  <div class="features_items" ><!--features_items-->
+                      <div class="col-sm-4" data-ng-repeat="image in cancel_reply_data" >
+                        <div class="product-image-wrapper" >
+                          <div class="single-products">
+                            <div class="productinfo text-center" >
+                              <img data-ng-src="images/closet/{{image.image}}" ><br>
+                              <a  class="btn btn-default add-to-cart" data-ng-click="reply(image.idi)" style="cursor: pointer"><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!--features_items-->
+                </div><br>
+             </div>
+<!-- ------------------------------------------------------------------- -->
+
+             <div ng-show="isSet(4)">
+               <h2 class="title">ชำระแล้ว</h2>
+               <div class="col-sm-12 padding-right" >
+                 <div class="features_items" ><!--features_items-->
+                     <div class="col-sm-6" data-ng-repeat="image in Buyer_Paid_data" >
+                       <div class="product-image-wrapper" >
+                         <div class="single-products">
+                           <div class="productinfo text-center" >
+                             <img data-ng-src="images/closet/{{image.image}}"><br>
+                             <a  class="btn btn-default add-to-cart" data-ng-click="detail_Buyer_Paid(image.idi)" style="cursor: pointer"><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div><!--features_items-->
+               </div><br>
+            </div>
+<!-- ------------------------------------------------------------------- -->
+
+          <div ng-show="isSet(5)">
+            <h2 class="title">สินค้าที่กำลังจัดส่ง</h2>
+            <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="image in show_sending_data">
+              <div class="col-lg-6 col-md-6 col-sm-6 " >
+                <img data-ng-src="images/closet/{{image.image}}"/>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 " >
+                <div class="col-md-12 col-md-12 col-sm-12" >
+                  <ul class="nav nav-pills nav-stacked">
+                    <li>เลขพัสดุ : {{image.track}}</li>
+                    <li>วันที่ส่งสินค้า : {{image.track_at}}</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="productinfo text-center" >
+                  <a  class="btn btn-default add-to-cart" data-ng-click="okk(image.idi)" style="cursor: pointer" >ยืนยันการรับสินค้า</a>
+                </div>
+              </div>
+          </div>
+        </div>
+<!-- ------------------------------------------------------------------- -->
+
+           <div ng-show="isSet(6)">
+             <h2 class="title">ยกเลิกการซื้อ</h2>
+             <div class="col-sm-12 padding-right" >
+               <div class="features_items" ><!--features_items-->
+                   <div class="col-sm-4" data-ng-repeat="image in show_Canceled_Buy" >
+                     <div class="product-image-wrapper" >
+                       <div class="single-products">
+                         <div class="productinfo text-center" >
+                           <img data-ng-src="images/closet/{{image.image}}"<br>
+                           <a  class="btn btn-default add-to-cart" data-ng-click="detail_Canceled_Buy(image.idi)" style="cursor: pointer"><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div><!--features_items-->
+             </div><br>
+          </div>
+<!-- ------------------------------------------------------------------- -->
+
+          <div ng-show="isSet(7)">
+            <h2 class="title">สินค้าที่ได้รับแล้วทั้งหมด</h2>
+            <div class="col-sm-12 padding-right" >
+              <div class="features_items" ><!--features_items-->
+                  <div class="col-sm-6" data-ng-repeat="image in show_Received_data" >
+                    <div class="product-image-wrapper" >
+                      <div class="single-products">
+                        <div class="productinfo text-center" >
+                          <img data-ng-src="images/closet/{{image.image}}"><br>
+                          <a  class="btn btn-default add-to-cart" data-ng-click="open(image.idi)" style="cursor: pointer"><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--features_items-->
+            </div><br>
+          </div>
+<!-- ------------------------------------------------------------------- -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- -------- alert---add picture------------------->
+
+  <div class="modal fade bs-example-modal-lg" id="myModall1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+
+              <form data-ng-submit="add_transfer()" name="form2" role="form2">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="image in show_confirm_transfer_data">
+                    <div class="col-lg-6 col-md-6 col-sm-6 " >
+                      <img data-ng-src="images/closet/{{image.image}}" class="img" height="400"  />
+                    </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products"><!--brands_products-->
+                              <br><h2>ข้อมูลรูปภาพ</h2>
+                                <div data-ng-repeat="p in show_confirm_transfer_detail">
+                                  <ul class="nav nav-pills nav-stacked">
+                                    <li>ราคา : {{image.price}}</li>
+                                    <li>รายละเอียดสินค้า :  {{image.detail}}</li>
+                                    <li>ยีห้อ :  {{p.name}}</li>
+                                    <li>สีของสินค้า :  {{p.nameColor}}</li>
+                                    <li>ประเภท :  {{p.nameTH}}</li>
+                                  </ul>
+                                  </div>
+                                  <h2>กรอกข้อมูลการโอน</h2>
+                                    <ul class="nav nav-pills nav-stacked"  data-ng-repeat="image in show_confirm_transfer_bank">
+                                      <li>ชื่อธนาคาร : {{image.bank}}</li>
+                                      <li>ชื่อบัญชี :  {{image.name_bank}}</li>
+                                      <li>เลขบัญชี :  {{image.no_bank}}</li>
+                                    </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                  </div><br><br>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <label>อัพโหลดสลิป :</label>
+                    <input ng-model="form.image2" name="image"  class = "form-control" type="file" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" required="">
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" >
+                  <div class="col-lg-6 col-md-6 col-sm-6" >
+                    <label>ที่อยู่ :</label>
+                    <input class="form-control "  data-ng-model="form.address" type="text" required=""/>
+                    <input class="form-control "  data-ng-model="form2" type="hidden"/>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <label>เบอร์โทร :</label>
+                    <input class="form-control "  data-ng-model="form.phone" type="text" required=""/>
+                  </div>
+              </div>
+
+                    <div class="modal-footer">
+                      <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+
+                          <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                              <button type="button"  class="btn-aa4" style="background: #999" data-dismiss="modal">ยกเลิก</button>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                              <button type="submit" class="btn-aa4" >เพิ่ม</button>
+                          </div>
+                      </div>
+
+                    </div>
+              </form>
+
+          </div>
+      </div>
+  </div>
+
+  <!-- -------- alert---show slip------------------->
+
+  <div class="modal fade bs-example-modal-lg" id="myModall2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+
+              <!-- <form> -->
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="image in detail_Buyer_Paid_data">
+                    <div class="col-lg-6 col-md-6 col-sm-6 " >
+                      <img data-ng-src="images/closet/{{image.image}}" class="img" height="400"  />
+                    </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products">
+                              <br><h2>หลักฐานการโอน</h2>
+                                <div data-ng-repeat="p in detail_Buyer_Paid_detail">
+                                  <ul class="nav nav-pills nav-stacked">
+                                    <li>ผู้ซื้อสินค้า :  K.{{image.name}}</li>
+                                    <li>ประเภท :  {{p.nameTH}}</li>
+                                    <li>ยีห้อ :  {{p.name}}</li>
+                                    <li>สีของสินค้า :  {{p.nameColor}}</li>
+                                    <li>รายละเอียดสินค้า :  {{image.detail}}</li>
+                                  </ul>
+                                  </div>
+                                </div><!--/brands_products-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                  </div>
+
+                  <div class="col-lg-12 col-md-12 col-sm-12" data-ng-repeat="image in detail_Buyer_Paid_data">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <img data-ng-src="images/slip/{{image.slip}}" width="250px" />
+                    </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products"><!--brands_products-->
+                              <br><h2>ที่อยู่และหลักฐานการซื้อ</h2>
+                              <div data-ng-repeat="p in detail_Buyer_Paid_data">
+                                <ul class="nav nav-pills nav-stacked" data-ng-repeat="pp in detail_Buyer_Paid_bank">
+                                  <li>ราคา : {{image.price}} บาท</li>
+                                  <li>จ่ายเงินวันที่ :  {{image.buy_at}}</li>
+                                  <li>ชื่อธนาคาร : {{pp.bank}}</li>
+                                  <li>ชื่อบัญชี :  {{pp.name_bank}}</li>
+                                  <li>เลขบัญชี :  {{pp.no_bank}}</li>
+                                  <li>ที่อยู่ที่ต้องจัดส่ง :  {{image.address}}</li>
+                                  <li>เบอร์โทร :  {{image.tel_buy}}</li>
+                                </ul>
+                              </div>
+                            </div><!--/brands_products-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
+
+  <!-- -------- alert---show slip------------------->
+
+  <div class="modal fade bs-example-modal-lg" id="myModall3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="image in open_data">
+                    <div class="col-lg-6 col-md-6 col-sm-6 " >
+                      <img data-ng-src="images/closet/{{image.image}}" class="img" height="400" />
+                    </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products"><!--brands_products-->
+                              <br><h2>หลักฐานการโอน</h2>
+                                <div data-ng-repeat="p in open_detail">
+                                  <ul class="nav nav-pills nav-stacked">
+                                    <li>ผู้ซื้อสินค้า :  K.{{image.name}}</li>
+                                    <li>รายละเอียดสินค้า :  {{image.detail}}</li>
+                                    <li>ยีห้อ :  {{p.name}}</li>
+                                    <li>สีของสินค้า :  {{p.nameColor}}</li>
+                                    <li>ประเภท :  {{p.nameTH}}</li>
+                                  </ul>
+                                  </div>
+                                </div><!--/brands_products-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                  </div><br>
+                  <div class="col-lg-12 col-md-12 col-sm-12" data-ng-repeat="image in open_data">
+                    <div class="col-lg-6 col-md-6 col-sm-6 " >
+                      <img data-ng-src="images/slip/{{image.slip}}" class="img" height="400" />
+                    </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products"><!--brands_products-->
+                              <br><h2>ข้อมูลการโอน</h2>
+                                <!-- <div class="brands-name"> -->
+                                  <ul class="nav nav-pills nav-stacked" data-ng-repeat="p in open_bank">
+                                    <li>ราคา : {{image.price}} บาท</li>
+                                    <li>จ่ายเงินวันที่ :  {{image.buy_at}}</li>
+                                    <li>ชื่อธนาคาร : {{p.bank}}</li>
+                                    <li>ชื่อบัญชี :  {{p.name_bank}}</li>
+                                    <li>เลขบัญชี :  {{p.no_bank}}</li>
+                                    <li>ที่อยู่ที่ต้องจัดส่ง :  {{image.address}}</li>
+                                    <li>เบอร์โทร :  {{image.tel_buy}}</li>
+                                    <li>เลขพัสดุ :  {{image.track}}</li>
+                                    <li>วันที่ส่งของ :  {{image.track_at}}</li>
+                                  </ul>
+                                  <!-- </div> -->
+                                </div><!--/brands_products-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                </div>
+            <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
+  <!-- ---------------------------------------------------- -->
+
+      <div class="modal fade bs-example-modal-lg" id="myModall4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+
+                <form data-ng-repeat="image in reply_data">
+                  <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6" title>
+                    <img data-ng-src="images/closet/{{image.image}}" class="img" height="400" />
+                  </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products"><!--brands_products-->
+                              <br><h2>ข้อมูลรูปภาพ</h2>
+                                <div data-ng-repeat="p in reply_detail">
+                                  <ul class="nav nav-pills nav-stacked">
+                                    <li>เจ้าของภาพ : {{image.username}}</li>
+                                    <li>ประเภทสินค้า : {{p.nameTH}}</li>
+                                    <li>ราคา : {{image.price}}</li>
+                                    <li>ยีห้อ :  {{p.name}}</li>
+                                    <li>สี :  {{p.nameColor}}</li>
+                                    <li>รายละเอียดสินค้า :  {{image.detail}}</li>
+                                  </ul>
+                                  </div>
+                                </div><!--/brands_products-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    <div class="modal-footer"></div>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+
+  <!-- -------- alert---show closet sell------------------->
+
+  <div class="modal fade bs-example-modal-lg" id="myModall5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+
+            <form data-ng-repeat="image in buyy_detail_data">
+              <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" title>
+                <img data-ng-src="images/closet/{{image.image}}" class="img" height="400" />
+              </div>
+                <section>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="left-sidebar">
+                          <div class="brands_products"><!--brands_products-->
+                          <br><h2>ข้อมูลรูปภาพ</h2>
+                            <div data-ng-repeat="p in buyy_detail_detail">
+                              <ul class="nav nav-pills nav-stacked">
+                                <li>เจ้าของภาพ : {{image.username}}</li>
+                                <li>ประเภทสินค้า : {{p.nameTH}}</li>
+                                <li>ราคา : {{image.price}}</li>
+                                <li>ยีห้อ :  {{p.name}}</li>
+                                <li>สี :  {{p.nameColor}}</li>
+                                <li>รายละเอียดสินค้า :  {{image.detail}}</li>
+                                <li>วันที่อัพโหลด :  {{image.sell_at}}</li>
+                              </ul>
+                              </div>
+                            </div><!--/brands_products-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                <div class="modal-footer"></div>
+              </form>
+
+          </div>
+      </div>
+  </div>
+  <!-- -------- alert---show closet sell------------------->
+
+  <div class="modal fade bs-example-modal-lg" id="myModall6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+
+            <form data-ng-repeat="image in detail_Canceled_data">
+              <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" title>
+                <img data-ng-src="images/closet/{{image.image}}" class="img" height="400" />
+              </div>
+                <section>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="left-sidebar">
+                          <div class="brands_products"><!--brands_products-->
+                          <br><h2>ข้อมูลรูปภาพ</h2>
+                            <div data-ng-repeat="p in detail_Canceled_detail">
+                              <ul class="nav nav-pills nav-stacked">
+                                <li>ประเภทสินค้า : {{p.nameTH}}</li>
+                                <li>ราคา : {{image.price}}</li>
+                                <li>ยีห้อ :  {{p.name}}</li>
+                                <li>สี :  {{p.nameColor}}</li>
+                                <li>รายละเอียดสินค้า :  {{image.detail}}</li>
+                                <li>วันทีซื้อ :  {{image.buy_at}}</li>
+                              </ul>
+                              </div>
+                            </div><!--/brands_products-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                <div class="modal-footer"></div>
+              </form>
+
+          </div>
+      </div>
+  </div>

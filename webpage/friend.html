@@ -1,0 +1,369 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+<!----------navbar--------------->
+<div class="navbar_">
+  <div class="container">
+    <h1 id=h1>
+      <span id="h15" class="lnr lnr-home"></span>
+      <span id="h15" style="margin-right: 10px;cursor: pointer"><a href="#/home">Home</a></span>
+      <span id="h15" class="lnr lnr-star"></span>
+      <span id="h15" style="margin-right: 10px;cursor: pointer" data-ng-if="admin === 0"><a href="#/follow">Follow</a></span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="logout()"> | Logout</span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-if="admin === 0"><a href="#/profile">คลิกเพื่อกลับไปที่โปรไฟล์ : {{username}}</a></span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-if="admin === 1"><a href="#/admin">ADMIN SystemSB : {{username}}</a></span>
+      <span id="h12" class="lnr lnr-user"></span>
+    </h1>
+  </div>
+</div><br><br><br>
+<!-- --------------ข้อมูลส่วนตัว----------------------- -->
+<br><br>
+<div class="container">
+  <div class="back_">
+    <div class="row">
+        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" >
+          <input type='hidden' data-ng-model="a" class = "form-control" />
+          <div data-ng-init="friendd(a)"></div>
+          <div class="brands_products">
+            <div class=" text-center">
+              <div class="card"  data-ng-repeat="image in show_friend_zone_image">
+                <img data-ng-src="images/profile/{{image.photo_name}}" class="avatar" data-ng-click="profile_friend(image.username)" style="cursor: pointer"/>
+                <a type="button" class="btn btn-default" data-ng-click="profile_friend(image.username)" style="cursor: pointer;color: #FE980F" >
+                  <span class="lnr lnr-magic-wand"> ดูรูปโปรไฟล์</span><br>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9" >
+          <input type="hidden" data-ng-model="a" class = "form-control" />
+          <div data-ng-init="friendd(a)"></div>
+        <div data-ng-repeat="p in show_friend_zone">
+          <h2>{{p.username}}
+            <a type="button" id="user_follow" class="btn btn-default" style="cursor: pointer" data-ng-click="following(a)" data-ng-init="checkBtn(a)" data-ng-if="admin === 0" >
+              <span class="lnr lnr-star"> {{btnc}}</span><br>
+            </a><hr>
+          </h2>
+              <ul class="container details">
+                <span id="h16" style="margin-center: 10px">{{ total_post_friend }}  Posts</span><span id="h100"> | </span>
+                <span id="h16" style="cursor: pointer" data-toggle="modal" data-target="#myModall8" >{{ total_follower_friend }} Followers</span><span id="h100"> | </span>
+                <span id="h16" style="cursor: pointer" data-toggle="modal" data-target="#myModall7">{{ total_following_friend }} Following</span><br><br>
+                <span id="h15" class="lnr lnr-user" ></span>
+                <span id="h15" style="margin-left: 10px"> {{p.name}}</span><br><br>
+                <span id="h15" class="lnr lnr-envelope"></span>
+                <span id="h15" style="margin-left: 10px"> {{p.email}}</span><br><br>
+                <span id="h15" class="lnr lnr-list"></span>
+                <span id="h15" style="margin-left: 10px"> {{p.detail}}</span><br><br>
+                <div data-ng-init="show_post(a)"></div>
+              </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><br>
+<!-- ------------------navbar- type--closet----------------- -->
+<div class="container">
+  <div class="back_">
+    <div class="row">
+    
+    <section>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="left-sidebar">
+              <h2>Category</h2>
+              <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                <table>
+                  <td>
+                    <img data-ng-src="images/type/all.png" class="avatar3" style="cursor: pointer" data-ng-click="search_all_just()"/>
+                  </td>
+                  <td>
+                    <img data-ng-src="images/type/shirt.png" class="avatar3" style="cursor: pointer" data-ng-click="search_shirt_just()"/>
+                  </td>
+                  <td>
+                    <img data-ng-src="images/type/skirt.png" class="avatar3" style="cursor: pointer" data-ng-click="search_skirt_just()"/>
+                  </td>
+                  <td>
+                    <img data-ng-src="images/type/pants.png" class="avatar3" style="cursor: pointer" data-ng-click="search_pants_just()"/>
+                  </td>
+                  <td>
+                    <img data-ng-src="images/type/shoes.png" class="avatar3" style="cursor: pointer" data-ng-click="search_shoes_just()"/>
+                  </td>
+                </table><br>
+
+                <table>
+                  <td>
+                    <img data-ng-src="images/type/dress.png" class="avatar3" style="cursor: pointer" data-ng-click="search_dress_just()"/>
+                  </td>
+                  <td>
+                    <img data-ng-src="images/type/bag.png" class="avatar3" style="cursor: pointer" data-ng-click="search_bag_just()"/>
+                  </td>
+                  <td>
+                    <img data-ng-src="images/type/accessories.png" class="avatar3" style="cursor: pointer" data-ng-click="search_accessories_just()" />
+                  </td>
+                </table>
+              </div><!--/category-products--><br>
+
+              <div class="brands_products"><!--brands_products-->
+                <h2>Color</h2>
+                <div class="brands-name1">
+                  <table>
+                    <td>
+                      <!-- all -->
+                      <img data-ng-src="images/color/all.png" class="avatar3" style="cursor: pointer" data-ng-click="search_color_all_just()"/>
+                    </td>
+                    <td>
+                      <!-- เทา -->
+                      <img data-ng-src="images/color/gray.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_gray_just()"/>
+                    </td>
+                    <td>
+                      <!-- ดำ -->
+                      <img data-ng-src="images/color/black.png" class="avatar3" style="cursor: pointer" data-ng-click="search_black_just()"/>
+                    </td>
+                    <td>
+                      <!-- ขาว -->
+                      <img data-ng-src="images/color/white.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_white_just()"/>
+                    </td>
+                    <td>
+                      <!-- เขียว -->
+                      <img data-ng-src="images/color/green.png" class="avatar3" style="cursor: pointer" data-ng-click="search_green_just()"/>
+                    </td>
+                  </table><br>
+
+                  <table>
+                    <td>
+                      <!-- แดง -->
+                      <img data-ng-src="images/color/red.png" class="avatar3" style="cursor: pointer" data-ng-click="search_red_just()"/>
+                    </td>
+                    <td>
+                      <!-- ชมพู -->
+                      <img data-ng-src="images/color/pink.png" class="avatar3" style="cursor: pointer" data-ng-click="search_pink_just()"/>
+                    </td>
+                    <td>
+                      <!-- ส้ม -->
+                      <img data-ng-src="images/color/orange.png" class="avatar3" style="cursor: pointer" data-ng-click="search_orange_just()"/>
+                    </td>
+                    <td>
+                      <!-- เหลือง -->
+                      <img data-ng-src="images/color/yellow.png" class="avatar3" style="cursor: pointer" data-ng-click="search_yellow_just()"/>
+                    </td>
+                    <td>
+                      <!-- น้ำเงิน -->
+                      <img data-ng-src="images/color/blue.png" class="avatar3" style="cursor: pointer" data-ng-click="search_blue_just()"/>
+                    </td>
+                  </table><br>
+
+
+                  <table>
+                    <td>
+                      <!-- น้ำตาล -->
+                      <img data-ng-src="images/color/woody.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_woody_just()"/>
+                    </td>
+                    <td>
+                      <!-- ม่วง -->
+                      <img data-ng-src="images/color/m.png" class="avatar3" style="cursor: pointer" data-ng-click="search_m_just()"/>
+                    </td>
+                    <td>
+                      <!-- full -->
+                      <img data-ng-src="images/color/full.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_full_just()"/>
+                    </td>
+                  </table>
+
+                </div>
+              </div><!--/brands_products--><br>
+
+              <div class="price-range"><!--price-range-->
+                <h2>Price Range</h2>
+                <div class="well text-center">
+                  <form data-ng-submit="search_price_just()">
+                    <span id="h15" data-ng-click="" style="cursor: pointer">ค้นหาช่วงราคา</span>
+                    <input type="text" class="form-control" data-ng-model="search.min_just" placeholder="ราคาต่ำสุด" required="">
+                    <input type="text" class="form-control" data-ng-model="search.max_just" placeholder="ราคาสูงสุด" required="">
+                    <button type="submit" class="btn btn-default"> Submit </button>
+                  </form>
+                </div>
+              </div><!--/price-range-->
+
+              <div class="price-range"><!--date-->
+                <h2>Date</h2>
+                <div class="well text-center">
+                  <form data-ng-submit="search_date_just()">
+                    <span id="h15">ค้นหาวันที่</span>
+                    <input type="date" class="form-control" data-ng-model="search.status_date_just" required=""/>
+                    <button type="submit" class="btn btn-default"> OK </button>
+                  </form>
+                </div>
+              </div><!--/date-->
+
+            </div>
+          </div>
+
+          <div class="col-sm-9 padding-right">
+            <div class="features_items"><!--features_items-->
+              <h2 class="title text-center">Friend Items</h2>
+                <div class="col-sm-4"  data-ng-repeat="image in show_pic_friend">
+                  <div class="product-image-wrapper">
+                    <div class="single-products">
+                      <div class="productinfo text-center">
+                        <img data-ng-src="images/closet/{{image.image}}" width="250px" /><br>
+                        <a  class="btn btn-default add-to-cart" data-ng-click="show_picture_profile(image.idi)" style="cursor: pointer">
+                        <span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+              </div><!--features_items-->
+          </div>
+
+
+        </div>
+    </section>
+<!-- --------------------------------------------------------------------------------------------------------------------------- -->
+                    <!-- Return to Top -->
+                    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+
+                    <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+                    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+                    <!-- Test the scroll -->
+                    <div style="height:0px;">
+
+                      <!-- <h3>Scroll down</h3> -->
+                      <!-- <h3><i class="icon-arrow-down"></i> -->
+
+                    </div>
+  </div>
+</div>
+<!-- -------- alert---show detail closet------------------->
+  <div class="modal fade bs-example-modal-lg" id="myModall1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+                  <!-- <div class="modal-header"> -->
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <!-- </div> -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in show_pic_friend_detail">
+                    <div class="col-lg-6 col-md-6 col-sm-6 ">
+                      <img data-ng-src="images/closet/{{p.image}}"  />
+                    </div>
+                    <section>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="left-sidebar">
+                              <div class="brands_products"><!--brands_products-->
+                              <br><h2>ข้อมูลรูปภาพ</h2>
+                                  <ul class="nav nav-pills nav-stacked">
+                                    <li>ราคา : {{p.price}}</li>
+                                    <li>ประเภทสินค้า : {{p.nameTH}}</li>
+                                    <li>รายละเอียดสินค้า :  {{p.detail}}</li>
+                                    <li>ยีห้อ :  {{p.name}}</li>
+                                    <li>สี :  {{p.nameColor}}</li>
+                                    <li>ประเภท :  {{p.nameTH}}</li>
+                                    <li>อัพโหลดเมื่อวันที่ : {{ p.created_at }}</li>
+                                  </ul>
+                                </div><!--/brands_products-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                <div class="modal-footer"></div>
+          </div>
+      </div>
+    </div>
+<!-- ----------------------------------------------------------- -->
+    <div class="modal fade bs-example-modal-lg" id="myModall2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button><br>
+              <h2 class="title">รูปภาพโปรไฟล์</h2><hr>
+              <div class="col-lg-12 col-md-12 col-sm-12" data-ng-repeat="p in profile_friend_item">
+                <img data-ng-src="images/profile/{{p.photo_name}}" height="400px" />
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- ------------------------------------------------------------------------ -->
+<div class="modal fade bs-example-modal-lg" id="myModall7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-star-half"></span> คนที่เพื่อนคุณกำลังติดตาม</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 over"  >
+                      <div class="col-lg-5 col-md-5 col-sm-5 "></div>
+                          <div class="res" >
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in follower_friend">
+                                <div class="col-lg-10 col-md-10 col-sm-10 ">
+                                  <div class="col-lg-2 col-md-2 col-sm-2 " >
+                                    <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                                 </div>
+                                  <ul class="container details" >
+                                  <span id="h16"><a href="#/friend/{{p.username}}" data-ng-click="friendd(a)">{{p.username}}</a></span><br>
+                                  <span id="h15">{{p.name}}</span>
+                                  <br><br>
+                                  </ul>
+                               </div><br>
+                             </div>
+                            </div>
+                          </div>
+                        <div></div>
+                    </div>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ---------------------------------------------------------------------------- -->
+<div class="modal fade bs-example-modal-lg" id="myModall8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-star-half"></span> คนที่ติดตามเพื่อนคุณ</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 over"  >
+                      <div class="col-lg-5 col-md-5 col-sm-5 "></div>
+                          <div class="res" >
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in following_friend">
+                                <div class="col-lg-10 col-md-10 col-sm-10 ">
+                                  <div class="col-lg-2 col-md-2 col-sm-2 " >
+                                    <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                                  </div>
+                                  <ul class="container details" >
+                                    <span id="h16"><a href="#/friend/{{p.username}}" data-ng-click="friendd(a)">{{p.username}}</a></span><br>
+                                    <span id="h15">{{p.name}}</span><br><br>
+                                  </ul>
+                                </div><br>
+                              </div>
+                            </div>
+                          </div>
+                        <div></div>
+                    </div>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>

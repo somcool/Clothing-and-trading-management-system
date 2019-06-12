@@ -1,0 +1,501 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+<!----------navbar--------------->
+<div class="navbar_">
+  <div class="container">
+    <h1 id=h1>
+      <span id="h15" class="lnr lnr-home"></span>
+      <span id="h15" style="margin-right: 10px;cursor: pointer"><a href="#/home">Home</a></span>
+      <span id="h15" class="lnr lnr-star"></span>
+      <span id="h15" style="margin-right: 10px;cursor: pointer" data-ng-if="admin === 0"><a href="#/follow">Follow</a></span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="logout()"> | Logout</span>
+      <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-if="admin === 0"><a href="#/profile">user : {{username}}</a></span>
+      <span id="h12" class="lnr lnr-user"></span>
+    </h1>
+  </div>
+</div><br><br><br>
+
+
+<!-- --------------ข้อมูลส่วนตัว----------------------- -->
+<br><br><div class="container">
+  <div class="back_">
+    <div class="row">
+        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" >
+          <div class="brands_products">
+            <div class=" text-center">
+              <div class="card"  data-ng-repeat="image in show_pro">
+                <img data-ng-src="images/profile/{{image.photo_name}}" class="avatar" data-toggle="modal" data-target="#myModall3" style="cursor: pointer" /><br>
+                <a type="button" class="btn btn-default"data-toggle="modal" data-target="#myModall3" style="cursor: pointer;color: #FE980F" >
+                  <span class="lnr lnr-magic-wand"> อัพเดตรูปภาพ</span><br>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+          <h2>{{username}}
+          <a type="button" class="btn btn-default" href="#/profile/setting" data-ng-click="setting()">
+            <span class="lnr lnr-cog"> การตั้งค่า</span><br>
+          </a>
+          </h2><hr>
+              <input type="hidden" data-ng-model="a" class = "form-control" />
+              <ul class="container | details">
+                <span id="h16" style="margin-center: 10px">{{ total_post }}  Posts</span><span id="h100"> | </span>
+                <span id="h16" style="cursor: pointer" data-toggle="modal" data-target="#myModall7">{{ total_follower }} Followers</span><span id="h100"> | </span>
+                <span id="h16" style="cursor: pointer" data-toggle="modal" data-target="#myModall6">{{ total_following }} Following</span><br><br>
+                <span id="h15" class="lnr lnr-user" ></span>
+                <span id="h15" style="margin-left: 10px"> {{name}}</span><br><br>
+                <span id="h15" class="lnr lnr-envelope"></span>
+                <span id="h15" style="margin-left: 10px"> {{email}}</span><br><br>
+                <span id="h15" class="lnr lnr-list"></span>
+                <span id="h15" style="margin-left: 10px"> {{detail}}</span>
+              </ul>
+        </div>
+
+    </div>
+  </div>
+</div><br>
+
+<!-- ------------------navbar- type--closet----------------- -->
+<div class="container">
+  <div class="search_">
+    <div class="row">
+
+      <section>
+    		<!-- <div class=""> -->
+    			<div class="row">
+    				<div class="col-sm-3">
+    					<div class="left-sidebar">
+
+                <div class="brands_products"><!--add closet-->
+                  <h2>Add Closet</h2>
+                  <div class=" text-center">
+                    <a type="button" class="btn btn-default"  href="#/profile/addcloset" style="cursor: pointer;color: #006600" >
+                      <span class="lnr lnr-shirt" style="color: #006600"></span> Upload Closet
+                    </a>
+                  </div>
+                </div><!--/add closet--><br>
+
+                <div class="brands_products"><!--delete closet-->
+                  <h2>DELETE</h2>
+                  <div class=" text-center">
+                    <a type="button" class="btn btn-default" style="cursor: pointer;color: #ff5c33" href="#/profile/deleted">
+                      <span class="lnr lnr-trash" style="color: #ff5c33"></span> Deleted Closet
+                    </a>
+                  </div>
+                </div><!--/delete closet--><br>
+
+    						<h2>Category</h2>
+    						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                  <table>
+                    <td>
+                      <img data-ng-src="images/type/all.png" class="avatar3" style="cursor: pointer" data-ng-click="search_all()"/>
+                    </td>
+                    <td>
+                      <img data-ng-src="images/type/shirt.png" class="avatar3" style="cursor: pointer" data-ng-click="search_shirt()"/>
+                    </td>
+                    <td>
+                      <img data-ng-src="images/type/skirt.png" class="avatar3" style="cursor: pointer" data-ng-click="search_skirt()"/>
+                    </td>
+                    <td>
+                      <img data-ng-src="images/type/pants.png" class="avatar3" style="cursor: pointer" data-ng-click="search_pants()"/>
+                    </td>
+                    <td>
+                      <img data-ng-src="images/type/shoes.png" class="avatar3" style="cursor: pointer" data-ng-click="search_shoes()"/>
+                    </td>
+                  </table><br>
+
+                  <table>
+                    <td>
+                      <img data-ng-src="images/type/dress.png" class="avatar3" style="cursor: pointer" data-ng-click="search_dress()"/>
+                    </td>
+                    <td>
+                      <img data-ng-src="images/type/bag.png" class="avatar3" style="cursor: pointer" data-ng-click="search_bag()"/>
+                    </td>
+                    <td>
+                      <img data-ng-src="images/type/accessories.png" class="avatar3" style="cursor: pointer" data-ng-click="search_accessories()" />
+                    </td>
+                  </table>
+    						</div><!--/category-products--><br>
+
+    						<div class="brands_products"><!--brands_products-->
+    							<h2>Color</h2>
+    							<div class="brands-name1">
+                    <table>
+                      <td>
+                        <!-- all -->
+                        <img data-ng-src="images/color/all.png" class="avatar3" style="cursor: pointer" data-ng-click="search_all()"/>
+                      </td>
+                      <td>
+                        <!-- เทา -->
+                        <img data-ng-src="images/color/gray.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_gray()"/>
+                      </td>
+                      <td>
+                        <!-- ดำ -->
+                        <img data-ng-src="images/color/black.png" class="avatar3" style="cursor: pointer" data-ng-click="search_black()"/>
+                      </td>
+                      <td>
+                        <!-- ขาว -->
+                        <img data-ng-src="images/color/white.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_white()"/>
+                      </td>
+                      <td>
+                        <!-- เขียว -->
+                        <img data-ng-src="images/color/green.png" class="avatar3" style="cursor: pointer" data-ng-click="search_green()"/>
+                      </td>
+                    </table><br>
+
+                    <table>
+                      <td>
+                        <!-- แดง -->
+                        <img data-ng-src="images/color/red.png" class="avatar3" style="cursor: pointer" data-ng-click="search_red()"/>
+                      </td>
+                      <td>
+                        <!-- ชมพู -->
+                        <img data-ng-src="images/color/pink.png" class="avatar3" style="cursor: pointer" data-ng-click="search_pink()"/>
+                      </td>
+                      <td>
+                        <!-- ส้ม -->
+                        <img data-ng-src="images/color/orange.png" class="avatar3" style="cursor: pointer" data-ng-click="search_orange()"/>
+                      </td>
+                      <td>
+                        <!-- เหลือง -->
+                        <img data-ng-src="images/color/yellow.png" class="avatar3" style="cursor: pointer" data-ng-click="search_yellow()"/>
+                      </td>
+                      <td>
+                        <!-- น้ำเงิน -->
+                        <img data-ng-src="images/color/blue.png" class="avatar3" style="cursor: pointer" data-ng-click="search_blue()"/>
+                      </td>
+                    </table><br>
+
+                    <table>
+                      <td>
+                        <!-- น้ำตาล -->
+                        <img data-ng-src="images/color/woody.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_woody()"/>
+                      </td>
+                      <td>
+                        <!-- ม่วง -->
+                        <img data-ng-src="images/color/m.png" class="avatar3" style="cursor: pointer" data-ng-click="search_m()"/>
+                      </td>
+                      <td>
+                        <!-- full -->
+                        <img data-ng-src="images/color/full.jpg" class="avatar3" style="cursor: pointer" data-ng-click="search_full()"/>
+                      </td>
+                    </table>
+
+    							</div>
+    						</div><!--/brands_products--><br>
+
+    						<div class="price-range"><!--price-range-->
+    							<h2>Price Range</h2>
+    							<div class="well text-center">
+                    <form data-ng-submit="search_price()">
+                      <span id="h15" data-ng-click="" style="cursor: pointer">ค้นหาช่วงราคา</span>
+                      <input type="text" class="form-control" data-ng-model="search.min" placeholder="ราคาต่ำสุด" required="">
+                      <input type="text" class="form-control" data-ng-model="search.max" placeholder="ราคาสูงสุด" required="">
+                      <button type="submit" class="btn btn-default"> Submit </button>
+                    </form>
+    							</div>
+    						</div><!--/price-range-->
+
+                <div class="price-range"><!--date-->
+    							<h2>Date</h2>
+    							<div class="well text-center">
+                    <form data-ng-submit="search_date()">
+                      <span id="h15">ค้นหาวันที่</span>
+                      <input type="date" class="form-control" data-ng-model="search.status_date" required=""/>
+                      <button type="submit" class="btn btn-default"> OK </button>
+                    </form>
+    							</div>
+    						</div><!--/Date-->
+
+    					</div>
+    				</div>
+
+    				<div class="col-sm-9 padding-right">
+              <div class="features_items"><!--features_items-->
+                <div class="text-center"><!--sell-buy-->
+                  <!-- sell -->
+                    <a type="button" class="btn btn-default" a href="#/profile/sell">
+                      <span class="lnr lnr-cart"> ดูรายการขายของฉัน</span>
+                    </a>
+                    <!-- buy -->
+                    <a type="button" class="btn btn-default" href="#/profile/buy" >
+                      <span class="lnr lnr-cart"> ดูรายการซื้อของฉัน</span>
+                    </a>
+                </div><hr><!--/sell-buy-->
+
+    						<h2 class="title text-center">Items</h2>
+                <div class="col-sm-12 padding-right" >
+                  <div class="features_items" ><!--features_items-->
+                      <div class="col-sm-4" data-ng-repeat="image in show_pic" >
+                        <div class="product-image-wrapper" >
+                          <div class="single-products">
+                            <div class="productinfo text-center" >
+                              <img data-ng-src="images/closet/{{image.image}}" class="img" ><br>
+                              <a  class="btn btn-default add-to-cart" data-toggle="modal" data-target="#myModall4" data-ng-click="show_detail_(image.idi)" style="cursor: pointer"><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                              <a  class="btn btn-default add-to-cart" data-ng-click="delcloset(image.idi)" style="cursor: pointer"><span class="lnr lnr-trash"  style="color: #cc0000"></span> ลบ</a>
+                              <a  class="btn btn-default add-to-cart" data-ng-click="sellcloset(image.idi)" style="cursor: pointer"><span class="lnr lnr-checkmark-circle"  style="color: #00b300"></span> ขาย</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!--features_items-->
+                </div>
+    					  </div><!--features_items-->
+    				</div>
+    			</div>
+    		<!-- </div> -->
+    	</section>
+<!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+                      <!-- Return to Top -->
+                      <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+
+                      <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+                      <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+                      <!-- Test the scroll -->
+                      <div style="height:0px;">
+
+                        <!-- <h3>Scroll down</h3> -->
+                        <!-- <h3><i class="icon-arrow-down"></i> -->
+
+                      </div>
+    </div>
+  </div>
+</div><br>
+
+  <!-- -------- alert -------add closet-------------------->
+
+<div class="modal fade bs-example-modal-lg" id="myModall1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <form data-ng-submit="add_closet()">
+                <div class="modal-header" id="ppro">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"> {{add}} </h3>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0" >
+
+                  <div class="col-lg-9 col-md-9 col-sm-9">
+                      <label>ประเภทเสื้อผ้า :</label>
+                      <select class="form-control " data-ng-options="t.id as t.nameTH for t in show_type" placeholder="กรอกประเภท" data-ng-model="form.type_id" required="">
+                          <option value="" >กรุณาเลือกประเภทเสื้อผ้า</option><span class="lnr lnr-chevron-down"></span>
+                      </select>
+                  </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <label>ราคา :</label>
+                        <input class="form-control "  data-ng-model="form.price" type="number" required="" />
+                        <input class="form-control "  data-ng-model="form.idi" type="hidden"  />
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0">
+                  <div class="col-lg-8 col-md-8 col-sm-8">
+                      <label>ยี่ห้อ :</label>
+                      <select class="form-control " data-ng-options="b.id as b.name for b in show_brand" placeholder="กรอกยี่ห้อ" data-ng-model="form.brand_id" required="">
+                          <option value="" >กรุณาเลือกประเภทยี่ห้อ</option><span class="lnr lnr-chevron-down"></span>
+                      </select>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                      <label>สี :</label>
+                      <select class="form-control " data-ng-options="c.id as c.nameColor for c in show_color" placeholder="กรอกสี" data-ng-model="form.color_id" required="">
+                          <option value="" >กรุณาเลือกสี</option><span class="lnr lnr-chevron-down"></span>
+                      </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <label>เลือกรูปภาพประกอบ :</label>
+                  <input ng-model="form.image" name="image"  class = "form-control" type="file" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" >
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <label>รายละเอียด (เพิ่มเติม) :</label>
+                    <input class="form-control "  data-ng-model="form.detail" type="text" required=""/>
+                </div>
+
+                <div class="modal-footer">
+                  <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0" >
+                    <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                        <button  type="button" data-dismiss="modal" data-ng-click="close()" class="btn-aa4" style="background: #999" data-dismiss="modal" >ยกเลิก</button>
+                    </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 " style="margin: 0 ;padding: 0 5px" >
+                          <button class="btn-aa4" type="submit" style="border: 1px solid #fff" >{{submit}}</button>
+                      </div>
+                  </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- -------- alert---add picture------------------->
+
+<div class="modal fade bs-example-modal-lg" id="myModall3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <form data-ng-submit="add_pic()" name="form1" role="form1">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-magic-wand"></span> อัพโหลดรูปโปรไฟล์</h3>
+                </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <input data-ng-model="form.image1" class = "form-control" type="file" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" required="">
+                    </div>
+                <div class="modal-footer">
+                    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+
+                        <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                            <button type="reset"  class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                            <button type="submit" class="btn-aa4" >เพิ่ม</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- -------- alert---show closet------------------->
+
+<div class="modal fade bs-example-modal-lg" id="myModall4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <form  data-ng-repeat="p in show_detail">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" data-ng-repeat="image in show_detail">
+                  <img data-ng-src="images/closet/{{image.image}}"/>
+                </div>
+                  <section>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <div class="left-sidebar">
+                            <div class="brands_products"><!--brands_products-->
+                            <h2>ข้อมูลรูปภาพ</h2>
+                              <!-- <div class="brands-name"> -->
+                                <ul class="nav nav-pills nav-stacked">
+                                  <li>ประเภทสินค้า : {{p.nameTH}}</li>
+                                  <li>ราคา : {{p.price}}</li>
+                                  <li>ยีห้อ :  {{p.name}}</li>
+                                  <li>สี :  {{p.nameColor}}</li>
+                                  <li>รายละเอียดสินค้า :  {{p.detail}}</li>
+                                  <li>วันที่อัพโหลด :  {{p.updated_at}}</li>
+                                </ul>
+                                <!-- </div> -->
+                              </div><!--/brands_products-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <div class="modal-footer">
+                      <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+                        <a type="button"  class="btn btn-default" data-dismiss="modal" data-ng-click="close()" style="cursor: pointer;color: #ff0000" >
+                          <span class="lnr lnr-cross" style="color: #ff0000"></span> ยกเลิก
+                        </a>
+                        <a type="button" class="btn btn-default"  data-toggle="modal" data-toggle="modal" data-target="#myModall1" data-ng-click="editcloset(p)" data-dismiss="modal" data-ng-click="close()" style="cursor: pointer;color: #006600" >
+                          <span class="lnr lnr-pencil" style="color: #006600"></span> แก้ไข
+                        </a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+      <div class="modal fade bs-example-modal-lg" id="myModall6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                  <form >
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-star-half"></span> คนที่ติดตามคุณ</h3>
+                      </div>
+                      <div class="row">
+                        <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="price-range">
+                            <div class="text-center | brands_products">
+                            <h2><span class="lnr lnr-magnifier"></span> Search Friends</h2>
+                              <input type="search" id="search" class="form-control" placeholder="ค้นหาเพื่อน" data-ng-model="s_user" />
+                            </div>
+                          </div>
+                        </div> -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in follower | filter:s_user ">
+                          <div class="col-lg-10 col-md-10 col-sm-10 ">
+                            <div class="col-lg-2 col-md-2 col-sm-2 " >
+                              <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                            </div>
+                            <ul class="container details" >
+
+                              <span id="h16"><a href="#/friend/{{p.username}}" >{{p.username}}</a></span><br>
+                              <span id="h15">{{p.name}}</span><br><br>
+                            </ul>
+                          </div><br>
+                        </div>
+                       </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+      <div class="modal fade bs-example-modal-lg" id="myModall7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                  <form >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-star-half"></span> คนที่คุณกำลังติดตาม</h3>
+                    </div>
+                    <div class="row">
+                      <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="price-range">
+                          <div class="text-center | brands_products">
+                          <h2><span class="lnr lnr-magnifier"></span> Search Friends</h2>
+                            <input type="search" id="search" class="form-control" placeholder="ค้นหาเพื่อน" data-ng-model="s_user" />
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in following | filter:s_user">
+                       <div class="col-lg-10 col-md-10 col-sm-10 ">
+                        <div class="col-lg-2 col-md-2 col-sm-2 " >
+                          <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                        </div>
+                        <ul class="container details" >
+                          <span id="h16"><a href="#/friend/{{p.username}}" >{{p.username}}</a></span><br>
+                          <span id="h15">{{p.name}}</span><br><br>
+                        </ul>
+                      </div><br>
+                      </div>
+                     </div>
+                  </form>
+              </div>
+          </div>
+      </div>

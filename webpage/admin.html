@@ -1,0 +1,322 @@
+<div class="_loading text-center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div><br>
+      <p style="font-size: 18px">Loading..</p>
+    </div>
+</div>
+
+
+<!----------navbar--------------->
+<div class="navbar_">
+  <div class="container">
+      <h1 id="h1">
+        <span id="h15" class="lnr lnr-home"></span>
+        <span id="h15" style="margin-right: 10px;cursor: pointer" data-ng-click="homee()"><a href="#/home">Home</a></span>
+        <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="logout()"> | Logout</span>
+        <span id="h12" style="margin-left: 10px;cursor: pointer" data-ng-click="profile()"><a href="#/admin">User : {{username}}</a></span>
+        <span id="h12" class="lnr lnr-user"></span>
+      </h1>
+  </div>
+</div><br><br><br>
+<!-- --------------ข้อมูลส่วนตัว----------------------- -->
+<br><br><div class="container">
+  <div class="back_">
+    <div class="row">
+        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" >
+          <div class="card"  data-ng-repeat="image in show_pro">
+            <img data-ng-src="images/profile/{{image.photo_name}}" class="avatar" style="cursor: pointer" />
+          </div>
+        </div>
+
+        <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+          <h2>{{username}}
+            <a type="button" class="btn btn-default add-to-cart" style="cursor: pointer" data-toggle="modal" data-target="#myModall2">
+              <span class="lnr lnr-cog"></span> Edit Password<br>
+            </a>
+            <hr>
+          </h2>
+              <input type="hidden" data-ng-model="a" class = "form-control" />
+
+              <ul class="container | details">
+                <span id="h15" class="lnr lnr-user" ></span>
+                <span id="h15" style="margin-left: 10px"> {{name}}</span><br><br>
+                <span id="h15" class="lnr lnr-envelope"></span>
+                <span id="h15" style="margin-left: 10px"> {{email}}</span>
+
+              </ul>
+        </div>
+    </div>
+  </div>
+</div><br>
+
+<!-- ----------------------------------------------------------------------------------------- -->
+
+  <div class="container" ng-app="controllers">
+     <div class="back_">
+       <h1 id="h111">
+         <span id="h17">จัดการระบบทั่วไป</span>
+       </h1><hr>
+        <div class="row" ng-controller="home">
+          <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+              <li ng-class="{ active: isSet(1) }">
+                  <a href ng-click="setTab(1)">ผู้ใช้งานทั่วไป</a>
+              </li>
+              <li ng-class="{ active: isSet(2) }">
+                  <a href ng-click="setTab(2)">ผู้ใช้งานที่ถูกระงับ</a>
+              </li>
+              <li ng-class="{ active: isSet(3) }">
+                  <a href ng-click="setTab(3)"> เพิ่มแอดมิน</a>
+              </li>
+              <li ng-class="{ active: isSet(4) }">
+                  <a href ng-click="setTab(4)"> รูปภาพที่ถูกระงับ</a>
+              </li>
+            </ul>
+          </div>
+<!-- --------------------------------------- -->
+
+          <div class="col-md-8">
+            <div class="back_">
+<!-- ---------------------------------------- -->
+              <div ng-show="isSet(1)">
+                <h2 class="title">ผู้ใช้งานทั่วไปทั้งหมด</h2>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in show_admin_user">
+                      <div class="col-lg-2 col-md-2 col-sm-2 " >
+                        <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                     </div>
+                       <div class="col-lg-5 col-md-5 col-sm-5 " >
+                          <ul class="container details" >
+                            <span id="h16">Username : {{p.username}}</span><br>
+                            <span id="h15">Name : {{p.name}}</span><br>
+                            <span id="h15">Login : {{p.logged_at}}</span>
+
+                          <br><br>
+                          </ul>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 " >
+                         <a type="button" class="btn btn-default" data-ng-click="cancel_active(p.id)">ยกเลิกการใช้งาน</a>
+                     </div>
+                    </div><br>
+                </div>
+
+              </div>
+<!-- -------------------------------------------------------------------------------- -->
+              <div ng-show="isSet(2)">
+                <h2 class="title">ผู้ใช้งานที่ถูกระงับการใช้งาน</h2>
+                <div class="row">
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 " > -->
+                    <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in show_Flat_User">
+                      <div class="col-lg-2 col-md-2 col-sm-2 " >
+                        <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                     </div>
+                       <div class="col-lg-5 col-md-5 col-sm-5 " >
+                          <ul class="container details" >
+                            <span id="h16">Username : {{p.username}}</span><br>
+                            <span id="h15">Name : {{p.name}}</span><br>
+                            <span id="h15">Login : {{p.logged_at}}</span>
+
+                          <br><br>
+                          </ul>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 " >
+                         <a type="button" class="btn btn-default" data-ng-click="cancel_band(p.id)">ยกเลิกการระงับ</a>
+                     </div>
+                    </div><br>
+                  <!-- </div> -->
+                </div>
+              <br>
+              </div>
+<!-- -------------------------------------------------------------------------------- -->
+              <div ng-show="isSet(3)">
+                <h2 class="title">แอดมินทั้งหมด</h2>
+                <a type="button" class="btn btn-default" data-toggle="modal" data-target="#myModall1">
+                  <span class="lnr lnr-plus-circle"></span>
+                  Add Admin
+                </a>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in show_total_admin">
+                      <div class="col-lg-2 col-md-2 col-sm-2 " >
+                        <img data-ng-src="images/profile/{{p.photo_name}}" class="avatar2"/>
+                     </div>
+                       <div class="col-lg-5 col-md-5 col-sm-5 " >
+                          <ul class="container details" >
+                            <span id="h16">Username : {{p.username}}</span><br>
+                            <span id="h15">Name : {{p.name}}</span><br>
+                            <span id="h15">Login : {{p.logged_at}}</span>
+
+                          <br><br>
+                          </ul>
+                      </div>
+                    </div><br>
+                </div>
+              </div>
+<!-- -------------------------------------------------------------------------------- -->
+              <div ng-show="isSet(4)">
+                <h2 class="title">รูปภาพที่ถูกระงับทั้งหมด</h2>
+                <div class="col-sm-12 padding-right" >
+                  <div class="features_items" ><!--features_items-->
+                      <div class="col-sm-6" data-ng-repeat="image in show_band_pic_data" >
+                        <div class="product-image-wrapper" >
+                          <div class="single-products">
+                            <div class="productinfo text-center" >
+                              <img data-ng-src="images/closet/{{image.image}}" width="400px"><br>
+                              <a  class="btn btn-default" data-toggle="modal" data-target="#myModall3" data-ng-click="show_detail_band(image.idi)" style="cursor: pointer" ><span class="lnr lnr-select"  style="color: #0099cc"></span> ดูข้อมูลเพิ่มเติม</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!--features_items-->
+                </div><br>
+             </div>
+<!-- -------------------------------------------------------------------------------- -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+  <div class="modal fade bs-example-modal-lg" id="myModall1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+              <form data-ng-submit="admin_add()">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-plus-circle"></span> Add Admin</h3>
+                  </div>
+
+                  <div class="res " id="pass_edit">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0">
+                          <div class="col-lg-12 col-md-10 col-sm-10">
+                              <label>Username :</label>
+                              <input class="form-control " data-ng-model="ad.username" type="text" />
+                          </div>
+                          <div class="col-lg-12 col-md-10 col-sm-10">
+                              <label>Name :</label>
+                              <input class="form-control " data-ng-model="ad.name" type="text" />
+                          </div>
+                          <div class="col-lg-12 col-md-10 col-sm-10">
+                              <label>Email :</label>
+                              <input class="form-control " data-ng-model="ad.email" type="email" />
+                          </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label>Password :</label>
+                                <input class="form-control "  data-ng-model="ad.password" type="password" />
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+
+                            <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                <button type="button" class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                <button type="submit" class="btn-aa4">เพิ่ม</button>
+                            </div>
+                        </div>
+
+                    </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <!-- --------------- edit profile --------------------- -->
+  <div class="modal fade bs-example-modal-lg" id="myModall2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+              <form data-ng-submit="edit_password()">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h3 class="modal-title" style="font-weight: 600" id="myModalLabel"><span class="lnr lnr-pencil"></span> Edit Password</h3>
+                  </div>
+
+                  <div class="res " id="pass_edit">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0;margin: 5px 0">
+                            <div class="col-lg-12 col-md-10 col-sm-10">
+                                <label>Password New :</label>
+                                <input class="form-control " data-ng-model="ed.pass" type="password" required=""/>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label>Confirm Password :</label>
+                                <input class="form-control "  data-ng-model="ed.con" type="password" required=""/>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12" >
+                            <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                <button type="button" class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                                <button type="submit" class="btn-aa4">เพิ่ม</button>
+                            </div>
+                        </div>
+                    </div>
+              </form>
+          </div>
+      </div>
+  </div>
+<!-- ----------------------------------------------------------- -->
+<div class="modal fade bs-example-modal-lg" id="myModall3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <!-- <form > -->
+        <!-- <div class="modal-header"> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+          </button>
+        <!-- </div> -->
+
+          <div class="col-lg-12 col-md-12 col-sm-12 " data-ng-repeat="p in show_detail_band_pic" >
+            <div class="col-lg-6 col-md-6 col-sm-6 ">
+              <img data-ng-src="images/closet/{{p.image}}"  />
+            </div>
+            <section>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="left-sidebar">
+                      <div class="brands_products"><!--brands_products-->
+                      <br><h2>ข้อมูลรูปภาพ</h2>
+                        <!-- <div class="brands-name"> -->
+                          <ul class="nav nav-pills nav-stacked">
+                            <li>Post By : {{p.username}}</li>
+                            <li>ราคา : {{p.price}}</li>
+                            <li>รายละเอียดสินค้า :  {{p.detail}}</li>
+                            <li>ยีห้อ :  {{p.name}}</li>
+                            <li>สี :  {{p.nameColor}}</li>
+                            <li>ประเภท :  {{p.nameTH}}</li>
+                            <li>วันที่อัพโหลด :  {{p.updated_at}}</li>
+                          </ul>
+                          <!-- </div> -->
+                        </div><!--/brands_products-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+        </div>
+          <div class="modal-footer">
+            <div class="col-lg-12 col-md-12 col-sm-12 " style="padding: 0" >
+              <div class="col-lg-6 col-md-6 col-sm-6  col-xs-6" >
+                  <button type="button" class="btn-aa4" style="background: #999" data-dismiss="modal" data-ng-click="close()">ยกเลิก</button>
+              </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 " style="margin: 0 ;padding: 0 5px">
+                    <button class="btn-aa4" type="submit" style="border: 1px solid #fff" data-ng-click="cancel_band_pic(p.idi)">ยกเลิกการระงับรูปภาพ</button>
+                </div>
+            </div>
+          </div>
+        <!-- </form> -->
+
+      </div>
+    </div>
+  </div>
